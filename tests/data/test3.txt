@@ -1,0 +1,2 @@
+Insertion	Deletion	Mutation
+0	0	0
