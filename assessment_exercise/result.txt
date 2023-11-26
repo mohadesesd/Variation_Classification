@@ -1,0 +1,2 @@
+Insertion	Deletion	Mutation
+32	32	36
