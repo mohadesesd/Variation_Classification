@@ -71,7 +71,7 @@ you can define your own test by creating a function related to the test in test_
 
 ## Assessment Exercise
 
-Inside this folder, there is a input CSV containing IDs, original and resulted sequences, the result.txt contains the number of each variant type, and the result.log which logs information, warnings and errors.
+Inside this folder, there is a input CSV containing IDs, original and resulted sequences, the result.txt contains the number of each variant type, and the result.log which logs information regarding each row of the input file, warnings and errors.
 
 ## License
 
