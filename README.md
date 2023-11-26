@@ -69,6 +69,10 @@ python -m unittest ./tests/test_variant_classification.py
 ```
 you can define your own test by creating a function related to the test in test_variant_classification.py, a csv file, and a truth file that will be compared to the output of the program. 
 
+## Assessment Exercise
+
+Inside this folder, there is a input CSV containing IDs, original and resulted sequences, the result.txt contains the number of each variant type, and the result.log which logs information, warnings and errors.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.
