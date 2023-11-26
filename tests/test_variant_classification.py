@@ -1,6 +1,7 @@
 import unittest
 from classification import *
-
+import glob 
+import os
 
 
 class TestInterval(unittest.TestCase):
@@ -19,7 +20,7 @@ class TestInterval(unittest.TestCase):
     
     def setUp(self):
         """
-        Set up that runs before each test case. 
+        Set up method runs before each test case. 
         Initializes common variables used in the tests.
         """
         self.test_data_path = 'tests/data'
@@ -183,7 +184,7 @@ class TestInterval(unittest.TestCase):
         """
         # Optionally, uncomment these lines to remove test files after each test.
         #for f in glob.glob(f'{self.test_data_path}/test*.txt'):
-        #   os.remove(f)
+         #  os.remove(f)
         #for f in glob.glob(f'{self.test_data_path}/test*.log'):
-        #  os.remove(f)
+         # os.remove(f)
         pass
