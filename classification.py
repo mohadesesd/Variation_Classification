@@ -3,11 +3,11 @@ import pandas as pd
 import logging
 import os
 
-argparser = argparse.ArgumentParser(description = 'Script for counting the number of each variant type (i.e. Insertions, Deletions, Mutations) from a csv file by knowing the original and result sequence.')
-argparser.add_argument('-i', '--input', metavar = 'file', dest = 'in_file_path', required = True, help = 'Input csv file which lists all variants, each line contains ID, original sequence, and variant.')#
-argparser.add_argument('-o', '--output', metavar = 'file', dest = 'out_file_path', required = True, help = 'Output file containing the number of each variant type.')
-argparser.add_argument('-l', '--log', metavar = 'file', dest = 'log_file_path', required = True, help = 'Log file containing each ID and each variant type also errors and exceptions.')
-argparser.add_argument('-c', '--chunk', metavar = 'int', dest = 'chunk_size', required = False, default=1000000, type = int, help = 'Size of the chunk of data that we read in the memory.')
+argparser = argparse.ArgumentParser(description = 'Script for analyzing DNA sequences. It classifies variants in a CSV file into three types: Insertions, Deletions, and Mutations, based on comparisons between the original and variant sequences.')
+argparser.add_argument('-i', '--input', metavar = 'file', dest = 'in_file_path', required = True, help = 'Path to the input CSV file. The file contains a list of variants, with each line including an ID, the original DNA sequence, and its variant.')
+argparser.add_argument('-o', '--output', metavar = 'file', dest = 'out_file_path', required = True, help = 'Path to the output file where the counts of each variant type will be saved. The output will be formatted as a tab-separated values file.')
+argparser.add_argument('-l', '--log', metavar = 'file', dest = 'log_file_path', required = True, help = 'Path to the log file where detailed information about the processing, including each ID with its coresponding variant type, and any errors or warnings, will be recorded.')
+argparser.add_argument('-c', '--chunk', metavar = 'int', dest = 'chunk_size', required = False, default=1000000, type = int, help = 'Chunk size for reading the input file. Determines the number of rows loaded into memory at one time. Useful for processing large files. Defaults to 1,000,000.')
 
 
 def is_valid_dna(sequence):
