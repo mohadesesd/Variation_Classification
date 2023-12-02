@@ -3,11 +3,17 @@
 This exercise is designed to classify DNA sequence variants into three categories: insertions, deletions, and mutations. It takes a CSV file as input, where each line contains an ID, the original DNA sequence, and its variant, and outputs the count of each variant type.
 
 A variant is an 'Insertion' if a single letter is inserted into the original sequence, e.g. 'ATCG' -> 'ATTCG'.
+
 A variant is a 'Deletion' if a single letter is deleted from the original sequence, e.g. 'ATTCG' -> 'ATCG'.
+
 A variant is a 'Mutation' if a single letter changes from one base to another in the original sequence, e.g. 'ATCG' -> 'ATGG'.
+
 Assumptions: 
+
 • Original and variant sequences are always different from each other, i.e. There won't be any situation where there is no variation.
+
 • Only one edit occurs for the original sequence to change to the variant sequence, i.e. There won't be multiple types of edits or multiple edits of the same type.
+
 • Original sequence can not be empty. But variant sequence may be empty if a deletion occurs on a single letter original sequence, e.g. 'T' -> ''.
 
 ## Features
