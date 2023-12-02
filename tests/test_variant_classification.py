@@ -4,7 +4,7 @@ import glob
 import os
 
 
-class TestInterval(unittest.TestCase):
+class TestVariantClassification(unittest.TestCase):
 
     def configure_logging(self, log_file):
         """
