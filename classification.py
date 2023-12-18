@@ -61,7 +61,7 @@ def classify_variant(original, variant):
         # Raises an error if none of the above conditions are met.
         raise ValueError('Invalid edit: does not conform to specifications.')
 
-def main(filepath, outputpath, chunksize, logpath):
+def main(filepath, outputpath, chunksize):
     """
     This function processes a given CSV file containing DNA sequences and their variants, and outputs the count of each variant type.
 
@@ -74,10 +74,6 @@ def main(filepath, outputpath, chunksize, logpath):
     # Check if the input file is empty and log an error if it is.
     if os.path.getsize(filepath) == 0:
         logging.error("No data found in the file.")
-
-    # Configure logging to record information and errors.
-    logging.basicConfig(filename = logpath, 
-                        level = logging.DEBUG,  format='%(asctime)s - %(levelname)s - %(message)s') 
     
     # Initialize a dictionary to keep count of each variant type.
     variant_counts = {'Insertion': [0], 'Deletion': [0], 'Mutation': [0]}
@@ -126,5 +122,10 @@ def main(filepath, outputpath, chunksize, logpath):
 
 if __name__ == "__main__":
     args = argparser.parse_args()
+    
+    # Configure logging to record information and errors.
+    logging.basicConfig(filename = args.log_file_path, 
+                        level = logging.DEBUG,  format='%(asctime)s - %(levelname)s - %(message)s') 
+    
     # Execute the main function with arguments from the command line.
-    main(args.in_file_path, args.out_file_path, args.chunk_size, args.log_file_path)
+    main(args.in_file_path, args.out_file_path, args.chunk_size)

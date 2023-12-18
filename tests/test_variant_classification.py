@@ -15,8 +15,8 @@ class TestVariantClassification(unittest.TestCase):
         """
         for handler in logging.root.handlers[:]:
             logging.root.removeHandler(handler)
-        logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-        return log_file
+        logging.basicConfig(filename = log_file, 
+                        level = logging.DEBUG,  format='%(asctime)s - %(levelname)s - Line : %(lineno)d - %(message)s', filemode='w', datefmt = '%Y-%m-%d %I:%M:%S %p')
     
     def setUp(self):
         """
@@ -32,7 +32,7 @@ class TestVariantClassification(unittest.TestCase):
         Verifies that the program handles empty original sequences correctly.
         """
         # Configure logging specific to this test.
-        log_path = self.configure_logging(f'{self.test_data_path}/test1.log')
+        self.configure_logging(f'{self.test_data_path}/test1.log')
 
         # Define file paths for the test input, expected output, and actual output.
         file_path = f'{self.test_data_path}/test1.csv'
@@ -40,7 +40,7 @@ class TestVariantClassification(unittest.TestCase):
         output_path = f'{self.test_data_path}/test1.txt'
         
         # Run the main function with the test files.
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
         
         # Compare the actual output with the expected output.
         with open(truth_path) as truth, open(output_path) as output:
@@ -55,12 +55,12 @@ class TestVariantClassification(unittest.TestCase):
         Verifies that the program handles invalid original sequences correctly.
         """
 
-        log_path = self.configure_logging(f'{self.test_data_path}/test2.log')
+        self.configure_logging(f'{self.test_data_path}/test2.log')
         file_path = f'{self.test_data_path}/test2.csv'
         truth_path = f'{self.test_data_path}/truth2.txt'
         output_path = f'{self.test_data_path}/test2.txt'
 
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
 
         with open(truth_path) as truth, open(output_path) as output:
             self.assertListEqual(list(truth), list(output))
@@ -79,7 +79,7 @@ class TestVariantClassification(unittest.TestCase):
         truth_path = f'{self.test_data_path}/truth3.txt'
         output_path = f'{self.test_data_path}/test3.txt'
 
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
 
         with open(truth_path) as truth, open(output_path) as output:
             self.assertListEqual(list(truth), list(output))
@@ -92,13 +92,13 @@ class TestVariantClassification(unittest.TestCase):
         Verifies that the program handles empty input correctly.
         """
 
-        log_path = self.configure_logging(f'{self.test_data_path}/test4.log')
+        self.configure_logging(f'{self.test_data_path}/test4.log')
 
         file_path = f'{self.test_data_path}/test4.csv'
         truth_path = f'{self.test_data_path}/truth4.txt'
         output_path = f'{self.test_data_path}/test4.txt'
 
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
 
         with open(truth_path) as truth, open(output_path) as output:
             self.assertListEqual(list(truth), list(output))
@@ -110,13 +110,13 @@ class TestVariantClassification(unittest.TestCase):
         This function is testing a condition where there is at least an edit which the nucleotide is inserted at the end of sequence.
         """
 
-        log_path = self.configure_logging(f'{self.test_data_path}/test5.log')
+        self.configure_logging(f'{self.test_data_path}/test5.log')
 
         file_path = f'{self.test_data_path}/test5.csv'
         truth_path = f'{self.test_data_path}/truth5.txt'
         output_path = f'{self.test_data_path}/test5.txt'
 
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
 
         with open(truth_path) as truth, open(output_path) as output:
             self.assertListEqual(list(truth), list(output))
@@ -128,13 +128,13 @@ class TestVariantClassification(unittest.TestCase):
         This function is testing a condition where there is at least an edit in our input file which the nucleotide is inserted to the front of sequence.
         """
 
-        log_path = self.configure_logging(f'{self.test_data_path}/test6.log')
+        self.configure_logging(f'{self.test_data_path}/test6.log')
 
         file_path = f'{self.test_data_path}/test6.csv'
         truth_path = f'{self.test_data_path}/truth6.txt'
         output_path = f'{self.test_data_path}/test6.txt'
 
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
 
         with open(truth_path) as truth, open(output_path) as output:
             self.assertListEqual(list(truth), list(output))
@@ -146,13 +146,13 @@ class TestVariantClassification(unittest.TestCase):
         This function is testing a condition where there is at least an edit in our input file which the nucleotide is deleted from the front of sequence.
         """
 
-        log_path = self.configure_logging(f'{self.test_data_path}/test7.log')
+        self.configure_logging(f'{self.test_data_path}/test7.log')
 
         file_path = f'{self.test_data_path}/test7.csv'
         truth_path = f'{self.test_data_path}/truth7.txt'
         output_path = f'{self.test_data_path}/test7.txt'
 
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
 
         with open(truth_path) as truth, open(output_path) as output:
             self.assertListEqual(list(truth), list(output))
@@ -164,13 +164,13 @@ class TestVariantClassification(unittest.TestCase):
         This function is testing a condition where there is at least an edit in our input file which the nucleotide is deleted from the end of sequence.
         """
 
-        log_path = self.configure_logging(f'{self.test_data_path}/test8.log')
+        self.configure_logging(f'{self.test_data_path}/test8.log')
 
         file_path = f'{self.test_data_path}/test8.csv'
         truth_path = f'{self.test_data_path}/truth8.txt'
         output_path = f'{self.test_data_path}/test8.txt'
 
-        main(file_path, output_path, self.chunk_size, log_path)
+        main(file_path, output_path, self.chunk_size)
 
         with open(truth_path) as truth, open(output_path) as output:
             self.assertListEqual(list(truth), list(output))
